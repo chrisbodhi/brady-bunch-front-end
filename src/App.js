@@ -9,6 +9,8 @@ import 'firebase/storage';
 
 import './App.css';
 
+import Grid from './components/Grid';
+
 // Firebase config
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -44,7 +46,7 @@ const getImageUrls = async (filenames) => {
   }));
 };
 
-const subset = (arr, num) => {
+export const subset = (arr, num) => {
   return sampleSize(arr, num);
 };
 
@@ -62,12 +64,6 @@ export default class extends React.Component {
   }
 
   render () {
-    return (
-      <div className='images'>
-        {this.state.urls.map((image, index) => {
-          return <div className='image' key={index}><img src={image} alt='placeholder kitten' /></div>;
-        })}
-      </div>
-    );
+    return <Grid urls={this.state.urls} />;
   }
 }
