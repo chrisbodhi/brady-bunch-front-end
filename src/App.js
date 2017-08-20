@@ -1,4 +1,5 @@
 import React from 'react';
+import sampleSize from 'lodash.samplesize';
 
 // This import loads the firebase namespace along with all its type information.
 import * as firebase from 'firebase/app';
@@ -43,6 +44,10 @@ const getImageUrls = async (filenames) => {
   }));
 };
 
+const subset = (arr, num) => {
+  return sampleSize(arr, num);
+};
+
 export default class extends React.Component {
   constructor (props) {
     super(props);
@@ -53,7 +58,7 @@ export default class extends React.Component {
 
   async componentDidMount () {
     const urls = await getImageUrls(filenames);
-    this.setState({ urls });
+    this.setState({ urls: subset(urls, 8) });
   }
 
   render () {
