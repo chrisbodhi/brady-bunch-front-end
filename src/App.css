@@ -24,5 +24,9 @@ div.image {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* padding: 10px; */
+}
+
+div.image img {
+  height: 380px;
+  width: 290px;
 }
